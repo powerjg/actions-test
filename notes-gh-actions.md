@@ -95,6 +95,14 @@ spec:
       repository: powerjg/actions-test
 ```
 
+## Turning it off
+
+```sh
+minikube stop
+```
+
+No idea if that's right, but it seems reasonable.
+
 ## Other notes
 
 We probably want to use special labels for builder nodes vs runner nodes so that we can use more cores to build faster.
@@ -103,3 +111,20 @@ We can add custom labels to the runners and then specify those labels in our scr
 See <https://github.com/actions/actions-runner-controller/blob/master/docs/using-arc-runners-in-a-workflow.md>.
 
 Can we use ccache? <https://github.com/hendrikmuhs/ccache-action>
+
+## Things we need to do
+
+- Document everything we need to migrate
+  - Deploy docker images (can do this only when the dockerfiles are changed)
+  - Compiler tests
+  - nightlies
+  - CI tests
+  - doxygen builder
+  - Things we no longer need:
+    - gem5 bot
+    - mirror bot
+- Get this working on amarillo and azacca (also loupe!)
+- Come up with some possible architectures
+- Can we create the gem5 binary and then pass it off to the tests?
+- Run some simple things on github servers
+- Could potentially pass the binary around between the build and test parts. See <https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts#passing-data-between-jobs-in-a-workflow>
