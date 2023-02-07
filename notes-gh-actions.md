@@ -39,6 +39,7 @@ See <https://minikube.sigs.k8s.io/docs/drivers/kvm2/>
 Solution: `export MINIKUBE_HOME=/scr/minikube`
 
 Assuming things are working so far, adjust the following settings. (These are what I used when I got the nightlies working)
+
 Note: When applying these configurations, you should run `minikube delete` afterwards, then `minikube start`.  Upon startup, there should be an indication in the terminal output that these 4 settings have been configured.  Sometimes for me, even when I did that, I didn't get that output, so I would go ahead and run another delete and start to make sure they were properly applied.
 
 ```sh
@@ -107,6 +108,7 @@ kubectl apply -f runnerdeployment.yaml
 ```
 
 In order to make sure the runners have actually been deployed, run this, and you should see 6 runners appear in your repository.  You can also double check that they appear in your repository under Settings --> Actions --> Runners
+
 Note: A couple things I've noticed is that a) sometimes they can take a while to appear within GitHub and be ready to start accepting workflows, and b) sometimes if the runners haven't been used for a bit they'll disappear from the GitHub page, but if you push a new workflow and wait a couple minutes it'll "wake up" and appear again.  This struck me as odd just because as far as I can tell, they'll never disappear from your kubectl output, leading to a disconnect between what's shown there and on GitHub.
 
 ```sh
